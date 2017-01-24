@@ -30,3 +30,7 @@ The Lambda function will need permissions to execute the various commands. This 
 # Manual
 
 Using manual.py you can run the command from your local machine. Just adjust the variables at the top and you'll be good to go.
+
+# Limitations
+
+Currently the script only cleans up the instances, as those are what cost money. Packer also creates security groups and keys (when needed). It's possible to make the script clean these up as well, but especially with the keys it's good to be careful.
