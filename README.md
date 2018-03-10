@@ -2,7 +2,7 @@
 
 This application will automatically detect long running Packer-created instances. Default behaviour is that it will send notifications about this to a created SNS topic, but it can be configured to automatically stop or terminate instances as well.
 
-It can either stop or terminate the Packer instances and sends a notification about it.
+Please ensure you subscribe to the created SNS topic in order to receive the notifications.
 
 ## Deployment
 
