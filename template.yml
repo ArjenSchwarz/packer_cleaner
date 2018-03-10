@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Checks Packer instances to see if they've been running for too long
+Parameters:
+  RunFrequency:
+    Type: String
+    Description: How often should the function run checks?
+    Default: rate(1 hour)
+  MaxPackerRuntime:
+    Type: Number
+    Description: The number of hours after which a Packer instance can be cleaned up
+    Default: 2
+  CleaningMethod:
+    Type: String
+    Description: "What should be done with instances? terminate and stop require additional IAM permissions. Allowed values: notification, terminate, stop"
+    Default: notification
+Resources:
+    PackerCleaner:
+      Type: AWS::Serverless::Function
+      Properties:
+        Handler: index.lambda_handler
+        Runtime: python2.7
+        CodeUri: ./code
+        Description: Cleans up long-running Packer instances
+        Environment:
+          Variables:
+            max_runtime: !Ref MaxPackerRuntime
+            method: !Ref CleaningMethod
+            sns_topic: !Ref PackerTopic
+        Policies:
+          - EC2DescribePolicy: {}
+          - SNSPublishMessagePolicy:
+              TopicName: !GetAtt [PackerTopic, TopicName]
+        Events:
+          HourlyTrigger:
+            Type: Schedule
+            Properties:
+              Schedule: !Ref RunFrequency
+    PackerTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        DisplayName: packer_cleaner
