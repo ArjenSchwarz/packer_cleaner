@@ -4,7 +4,7 @@ Description: Checks Packer instances to see if they've been running for too long
 Parameters:
   RunFrequency:
     Type: String
-    Description: How often should the function run checks?
+    Description: When should the applications run checks?
     Default: rate(1 hour)
   MaxPackerRuntime:
     Type: Number

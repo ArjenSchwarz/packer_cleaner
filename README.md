@@ -8,9 +8,9 @@ Please ensure you subscribe to the created SNS topic in order to receive the not
 
 The easiest way to deploy it is by using the Serverless Application Repository. Search for it there and install. Alternatively you can run the provided `packaged-sam-template.yml` yourself. Either way, there are 2 parameters that can be provided:
 
-*   RunFrequency: How much time should there be between automated runs of the function? Defaults to 1 hour
+*   RunFrequency: When should the applications run checks? Defaults to once per hour
 *   MaxRuntime: How many hours is a Packer created instance allowed to run before being marked as too long?
-*   CleaningMethod: What should be done with the instances found? Defaults to only sending a notification, but allows for stopping or terminating the instance. For the stop or terminate options you will need to provide additional IAM permissions however.
+*   CleaningMethod: What should be done with the instances found? Defaults to only sending a notification, but allows for stopping or terminating the instance. For the stop or terminate options you will need to manually provide additional IAM permissions.
 
 ## Trigger
 
