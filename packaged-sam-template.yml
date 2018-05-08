@@ -13,12 +13,12 @@ Parameters:
     Type: Number
   RunFrequency:
     Default: rate(1 hour)
-    Description: How often should the function run checks?
+    Description: When should the applications run checks?
     Type: String
 Resources:
   PackerCleaner:
     Properties:
-      CodeUri: s3://public.ig.nore.me/bf4ec0a7af0294ce70dabf9193371fc3
+      CodeUri: s3://public.ig.nore.me/892d5b2cad9764a5f1f0108e3db12279
       Description: Cleans up long-running Packer instances
       Environment:
         Variables:
