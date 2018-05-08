@@ -21,7 +21,7 @@ def lambda_handler(event, context):
                 {
                     'Name': 'key-name',
                     'Values': [
-                        'packer *'
+                        'packer_*'
                     ]
                 },
                 {
