@@ -73,7 +73,7 @@ def send_sns(instances):
     if method == "stop":
         message += "\n\nThey have been stopped"
     if method == "terminate":
-        message += "\n\nThe have been terminated"
+        message += "\n\nThey have been terminated"
     snsclient.publish(TopicArn=sns_topic,
                       Message=message,
                       Subject="Packer instances running too long")
